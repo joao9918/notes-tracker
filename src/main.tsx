@@ -1,7 +1,7 @@
 import { App } from "./App.tsx";
 import "./index.css";
 import { ThemeProvider } from "next-themes";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter } from "react-router";
 import ReactDOM from "react-dom/client";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
