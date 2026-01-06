@@ -1,73 +1,38 @@
-# React + TypeScript + Vite
+# 📝 Notes Tracker - Dashboard de Produtividade
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um gerenciador de notas moderno e intuitivo, focado em organização pessoal e produtividade. O projeto apresenta um dashboard completo com estatísticas em tempo real, sistema de favoritos e lixeira.
 
-Currently, two official plugins are available:
+![Dashboard Desktop](./assets/desktop-preview.png)
+![Dashboard Mobile](./assets/mobile-preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## React Compiler
+- **Dashboard Overview**: Visualização rápida do total de notas, favoritas e excluídas.
+- **Gráficos Dinâmicos**: Distribuição de notas visualizada através de um gráfico de pizza interativo.
+- **Gestão de Notas**: Criar, favoritar e mover notas para a lixeira.
+- **Dark Mode**: Interface totalmente adaptável ao tema claro ou escuro.
+- **Responsividade**: Experiência otimizada para dispositivos móveis e desktop.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- **React** (Vite)
+- **TypeScript**
+- **Tailwind CSS** (Estilização e Responsividade)
+- **Lucide React / React Icons** (Iconografia)
+- **Recharts** (Visualização de dados)
+- **React Router Dom** (Navegação)
+- **Context API** (Gerenciamento de estado global)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🏗️ Arquitetura e Conceitos Aplicados
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Neste projeto, apliquei conceitos fundamentais de desenvolvimento web moderno:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Gerenciamento de Estado**: Uso de Context API para compartilhar dados entre componentes sem Prop Drilling.
+- **Mobile First**: Design pensado primeiramente para dispositivos móveis antes da adaptação para telas maiores.
+- **Clean Code**: Componentização e organização de pastas seguindo boas práticas.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🔗 Link do Projeto
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O projeto está publicado e pode ser acessado através do link abaixo:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+> **Acesse aqui:** [Notes Tracker Online](https://notes-tracker-phi.vercel.app/)
