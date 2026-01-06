@@ -10,7 +10,7 @@ export function Favorites() {
   const [open, setOpen] = useState(false);
   const [quickMode, setQuickMode] = useState(false);
 
-  // --- Funções de Ação ---
+  // Funções de Ação
   const handleToggleFavorite = (id: string) => {
     setNotes((prevNotes) =>
       prevNotes.map((note) =>
@@ -37,7 +37,7 @@ export function Favorites() {
     setOpen(true);
   };
 
-  // Filtro de Favoritas (apenas as que não estão na lixeira)
+  // Filtro de Favoritas (que não estão na lixeira)
   const favoriteNotes = notes.filter((n) => n.isFavorited && !n.inTrash);
 
   return (

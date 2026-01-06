@@ -6,7 +6,6 @@ export function ToggleTheme() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Esse useEffect é importante para evitar erros de hidratação (SSR/Vite)
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;

@@ -20,9 +20,9 @@ export function NotePage() {
       setTitle(note.title);
       setDescription(note.description);
     }
-  }, [note?.id]); // Monitora o ID para garantir que trocou de nota
+  }, [note?.id]);
 
-  // Função para salvar no Context (que já salva no LocalStorage via useEffect)
+  // Salvar no Context (salva no LocalStorage por meio do useEffect)
   const handleAutoSave = (fields: { title?: string; description?: string }) => {
     if (id) {
       updateNote(id, fields);
@@ -59,7 +59,7 @@ export function NotePage() {
         </button>
 
         <header className="space-y-8">
-          {/* TÍTULO ESTILO INPUT INVISÍVEL */}
+          {/* TÍTULO */}
           <div className="pb-4 border-b border-zinc-200 dark:border-zinc-800">
             <input
               type="text"
@@ -73,7 +73,7 @@ export function NotePage() {
             />
           </div>
 
-          {/* DESCRIÇÃO ESTILO ÁREA DE TEXTO LIVRE */}
+          {/* DESCRIÇÃO */}
           <div className="min-h-125">
             <textarea
               value={description}

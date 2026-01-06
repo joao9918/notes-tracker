@@ -4,8 +4,8 @@ import { type ReactNode, useEffect, useState } from "react";
 
 interface SwipeableNoteProps {
   children: ReactNode;
-  onLeftAction: () => void; // Ação ao arrastar para a esquerda (ex: deletar)
-  onRightAction: () => void; // Ação ao arrastar para a direita (ex: favoritar/restaurar)
+  onLeftAction: () => void; //arrastar para a esquerda
+  onRightAction: () => void; //arrastar para a direita
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   leftBgColor?: string;
@@ -16,10 +16,10 @@ export function SwipeableNote({
   children,
   onLeftAction,
   onRightAction,
-  leftIcon = <FaTrash />, // Valor padrão
-  rightIcon = <FaStar />, // Valor padrão
-  leftBgColor = "#ef4444", // Vermelho padrão
-  rightBgColor = "#f97316", // Laranja padrão
+  leftIcon = <FaTrash />, // padrão
+  rightIcon = <FaStar />, //  padrão
+  leftBgColor = "#ef4444", // Vermelho
+  rightBgColor = "#f97316", // Laranja
 }: SwipeableNoteProps) {
   const x = useMotionValue(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -31,7 +31,7 @@ export function SwipeableNote({
     return () => window.removeEventListener("resize", checkSize);
   }, []);
 
-  // Cores dinâmicas baseadas nas props
+  // Cores dinâmicas pelas props
   const background = useTransform(
     x,
     [-100, 0, 100],

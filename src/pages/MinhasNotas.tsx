@@ -38,7 +38,7 @@ export function MinhasNotas() {
     setOpen(true);
   };
 
-  // Filtramos apenas as notas que NÃO estão na lixeira
+  // apenas notas que nao estão na lixeira
   const activeNotes = notes.filter((note) => !note.inTrash);
 
   return (
@@ -64,9 +64,9 @@ export function MinhasNotas() {
           </button>
         </header>
 
-        {/* --- GRID DE NOTAS --- */}
+        {/* GRID DE NOTAS */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Mapeamento das Notas Ativas com Swipe */}
+          {/* map  das notas ativas com Swipe */}
           {activeNotes.map((note) => (
             <SwipeableNote
               onRightAction={() => handleToggleFavorite(note.id)}
@@ -76,7 +76,7 @@ export function MinhasNotas() {
             </SwipeableNote>
           ))}
 
-          {/* Card de Adição Rápida Estilizado (Sempre ao final da lista) */}
+          {/* Card de Adição Rápida*/}
           <button
             onClick={handleOpenQuick}
             className="p-6 h-40 bg-transparent border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-2xl flex flex-col items-center justify-center gap-3 text-zinc-400 hover:border-orange-500/50 hover:text-orange-500 transition-all group"
@@ -90,7 +90,7 @@ export function MinhasNotas() {
           </button>
         </div>
 
-        {/* --- MODAL PARA CRIAÇÃO --- */}
+        {/* MODAL */}
         <Modal
           open={open}
           setOpen={setOpen}

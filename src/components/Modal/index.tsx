@@ -6,7 +6,7 @@ type modalChildren = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setNotes?: React.Dispatch<React.SetStateAction<Note[]>>;
-  isQuickNote?: boolean; // Nova Prop
+  isQuickNote?: boolean;
 };
 
 export function Modal({ open, setOpen, setNotes, isQuickNote }: modalChildren) {
@@ -29,7 +29,7 @@ export function Modal({ open, setOpen, setNotes, isQuickNote }: modalChildren) {
             </h1>
 
             <div className="space-y-5">
-              {/* Esconde o campo de título se for nota rápida */}
+              {/* esconde o campo de título se for nota rápida */}
               {!isQuickNote && (
                 <div>
                   <label className="block text-sm font-medium text-zinc-600 dark:text-zinc-400 mb-1.5">
@@ -57,7 +57,7 @@ export function Modal({ open, setOpen, setNotes, isQuickNote }: modalChildren) {
                 </label>
                 <textarea
                   required
-                  // Foca automaticamente na descrição se for nota rápida
+                  // somente descrição se for nota rápida
                   autoFocus={isQuickNote}
                   onChange={(e) => setInputDescription(e.currentTarget.value)}
                   value={inputDescription}
@@ -80,10 +80,10 @@ export function Modal({ open, setOpen, setNotes, isQuickNote }: modalChildren) {
 
               <button
                 onClick={() => {
-                  // Lógica condicional para o título
+                  // se for nota rapida, usa titulo pre-definido
                   const finalTitle = isQuickNote ? "Nota Rápida" : inputTitle;
 
-                  // Evita criar notas sem descrição
+                  // nao deixa criar nota sem descrição
                   if (!inputDescription.trim()) return;
 
                   const newNote = {

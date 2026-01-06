@@ -34,7 +34,7 @@ export function CreateNewNotes({ note, setNotes }: CreateNewNotesProps) {
       onClick={() => onSeeDetailsClick(note.id)}
       className="group p-6 h-40 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800/50 rounded-xl hover:border-orange-500/60 hover:shadow-lg transition-all cursor-pointer relative overflow-hidden"
     >
-      {/* 1. Barra Laranja no Topo: Sempre visível se for favorita, aparece no hover se não for */}
+      {/* 1. deixa a barra Laranja no topo, sempre visível se for favorita*/}
       <div
         className={`absolute top-0 left-0 w-full h-1 transition-transform origin-left duration-300
         ${
@@ -45,7 +45,7 @@ export function CreateNewNotes({ note, setNotes }: CreateNewNotesProps) {
       `}
       />
 
-      {/* 2. Estrela sutil no canto superior (Opcional: apenas se você quiser um ícone extra) */}
+      {/* 2. estrela de favoritado no canto superior*/}
       {note.isFavorited && (
         <div className="absolute top-3 right-3 text-orange-500">
           <FaStar size={14} className="drop-shadow-sm" />
@@ -53,7 +53,7 @@ export function CreateNewNotes({ note, setNotes }: CreateNewNotesProps) {
       )}
 
       <div className="flex flex-col h-full">
-        {/* Título: Apenas muda a cor se for favorito */}
+        {/* muda a cor do titulo se for favorito */}
         <h3
           className={`font-bold text-xl mb-2 transition-colors duration-300
           ${
@@ -70,7 +70,7 @@ export function CreateNewNotes({ note, setNotes }: CreateNewNotesProps) {
           {note.description}
         </p>
 
-        {/* BOTÕES PARA DESKTOP */}
+        {/* botões somente para pc */}
         <div className="absolute bottom-4 right-4 hidden md:flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-30">
           <button
             title="Favoritar"

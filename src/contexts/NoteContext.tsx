@@ -14,20 +14,19 @@ interface NoteContextType {
 
 const NoteContext = createContext<NoteContextType | undefined>(undefined);
 
-// ALTERE AQUI: O nome que aparecerá no seu LocalStorage
 const STORAGE_NAME = "notes";
 
 export function NoteProvider({ children }: { children: React.ReactNode }) {
   const location = useLocation().pathname;
 
-  // 1. Inicialização: Tenta ler do banco antes de definir o estado
+  // 1. Inicialização:
   const [notes, setNotes] = useState<Note[]>(() => {
     const saved = localStorage.getItem(STORAGE_NAME);
     if (saved) {
       try {
         return JSON.parse(saved);
       } catch {
-        return []; // Se o JSON estiver corrompido, evita quebrar o app
+        return []; // Para não quebrar o app, caso de erro
       }
     }
     return []; // Se não existir, começa vazio
@@ -35,7 +34,7 @@ export function NoteProvider({ children }: { children: React.ReactNode }) {
 
   const [currentPage, setCurrentPage] = useState<string>(location);
 
-  // 2. Persistência: Sempre que o array de notas mudar, ele salva
+  // 2. toda vez que o array de notas mudar, ele salva
   useEffect(() => {
     localStorage.setItem(STORAGE_NAME, JSON.stringify(notes));
   }, [notes]);
@@ -55,7 +54,6 @@ export function NoteProvider({ children }: { children: React.ReactNode }) {
   const updateNote = (id: string, updatedData: Partial<Note>) => {
     setNotes((prevNotes) =>
       prevNotes.map((note) =>
-        // Agora o TS entende que updatedData é um objeto que contém campos da Note
         String(note.id) === String(id) ? { ...note, ...updatedData } : note
       )
     );

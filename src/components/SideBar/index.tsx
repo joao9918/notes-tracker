@@ -2,17 +2,17 @@ import { useState } from "react";
 import { ToggleTheme } from "../ToogleTheme";
 import { useNotes } from "../../contexts/NoteContext";
 import { useNavigate } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa"; // Importe os ícones
+import { FaBars, FaTimes } from "react-icons/fa";
 
 export function SideBar() {
   const navigate = useNavigate();
   const { currentPage, setCurrentPage } = useNotes();
   const [isDark, setIsDark] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // Controle do Mobile
+  const [isOpen, setIsOpen] = useState(false); // Controle Mobile
 
   return (
     <>
-      {/* BOTÃO HAMBÚRGUER (Aparece apenas no Mobile) */}
+      {/* BOTÃO HAMBÚRGUER (apenas no Mobile) */}
       <button
         onClick={() => setIsOpen(true)}
         className="md:hidden fixed top-4 left-4 z-40 p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-lg text-orange-500"
@@ -20,7 +20,7 @@ export function SideBar() {
         <FaBars size={20} />
       </button>
 
-      {/* OVERLAY (Escurece o fundo quando a sidebar abre no mobile) */}
+      {/* escurece o fundo quando a sidebar abre no mobile */}
       {isOpen && (
         <div
           className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"

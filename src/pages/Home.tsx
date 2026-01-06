@@ -13,7 +13,7 @@ export function Home() {
   const favoriteNotes = notes.filter((n) => n.isFavorited && !n.inTrash).length;
   const trashNotes = notes.filter((n) => n.inTrash).length;
 
-  // Dados para o Gráfico de Pizza (Distribuição)
+  // Dados
   const chartData = [
     { name: "Normais", value: totalNotes - favoriteNotes },
     { name: "Favoritas", value: favoriteNotes },
@@ -35,7 +35,7 @@ export function Home() {
           </p>
         </header>
 
-        {/* --- GRID DE CARDS DE RESUMO --- */}
+        {/* CARDS DE RESUMO */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div
             onClick={() => {
@@ -75,7 +75,7 @@ export function Home() {
           </div>
         </div>
 
-        {/* --- SEÇÃO DE GRÁFICOS --- */}
+        {/* GRÁFICOS */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 min-w-0">
           {/* Card do Gráfico 1 */}
           <div className="p-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-sm">
@@ -106,7 +106,7 @@ export function Home() {
                       borderRadius: "8px",
                       color: "#fff",
                     }}
-                    itemStyle={{ color: "#fff" }} // Garante que o texto interno seja branco
+                    itemStyle={{ color: "#fff" }}
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -122,7 +122,7 @@ export function Home() {
             </div>
           </div>
 
-          {/* Card de Boas-vindas Dinâmico */}
+          {/* Card de Boas-vindas */}
           <div className="hidden lg:block p-8 bg-orange-500 rounded-3xl justify-center text-white relative overflow-hidden group">
             <div className="relative z-10">
               <h2 className="text-3xl font-bold mb-2">

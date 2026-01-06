@@ -1,7 +1,7 @@
 import { useNotes } from "../contexts/NoteContext";
 import { IoMdRefresh, IoMdTrash } from "react-icons/io";
 import { SideBar } from "../components/SideBar";
-import { SwipeableNote } from "../components/SwipeableNote"; // Importando o componente reutilizável
+import { SwipeableNote } from "../components/SwipeableNote";
 
 export function Trash() {
   const { notes, setNotes } = useNotes();
@@ -58,17 +58,17 @@ export function Trash() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {trashNotes.map((note) => (
-              /* --- AQUI USAMOS O SWIPE REUTILIZÁVEL --- */
+              /* SWIPE REUTILIZÁVEL */
               <SwipeableNote
                 key={note.id}
-                onRightAction={() => handleRestore(note.id)} // Arrastar p/ Direita: Restaurar
-                onLeftAction={() => handleDeletePermanent(note.id)} // Arrastar p/ Esquerda: Deletar
+                onRightAction={() => handleRestore(note.id)} // Arrastar Direita: Restaura
+                onLeftAction={() => handleDeletePermanent(note.id)} // Arrastar Esquerda: Exclui
                 rightIcon={<IoMdRefresh size={24} />}
                 leftIcon={<IoMdTrash size={24} />}
-                rightBgColor="#22c55e" // Verde (Emerald 500)
-                leftBgColor="#ef4444" // Vermelho (Red 500)
+                rightBgColor="#22c55e" // Verde
+                leftBgColor="#ef4444" // Vermelho
               >
-                {/* O conteúdo do card (mesma UI que você já tinha) */}
+                {/* conteúdo do card  */}
                 <div className="p-6 h-auto min-h-40 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl flex flex-col justify-between hover:border-orange-500/30 transition-all shadow-sm dark:shadow-none">
                   <div className="overflow-hidden">
                     <h3 className="font-bold text-lg text-zinc-800 dark:text-zinc-200 mb-1 wrap-break-word">
@@ -79,7 +79,7 @@ export function Trash() {
                     </p>
                   </div>
 
-                  {/* Botões visíveis no PC */}
+                  {/* Botões somente no PC */}
                   <div className="flex justify-end gap-3 mt-6 md:opacity-0 group-hover:opacity-100 transition-opacity max-md:hidden">
                     <button
                       onClick={() => handleRestore(note.id)}
