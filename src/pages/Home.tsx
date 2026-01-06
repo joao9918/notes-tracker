@@ -22,10 +22,10 @@ export function Home() {
   const COLORS = ["#27272a", "#f97316"]; // zinc-800 e orange-500
 
   return (
-    <div className="flex min-h-screen bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors">
+    <div className="flex min-h-dvh bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors">
       <SideBar />
 
-      <main className="flex-1 md:ml-64 p-6 md:p-10 pt-20 md:pt-10">
+      <main className="flex-1 md:ml-64 p-6 pt-20 pb-12 md:p-10 md:pt-10 md:pb-0">
         <header className="mb-10">
           <h1 className="text-4xl font-black tracking-tight">
             Dashboard <span className="text-orange-500">Overview</span>
@@ -37,25 +37,46 @@ export function Home() {
 
         {/* --- GRID DE CARDS DE RESUMO --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          <StatCard
-            title="Total de Notas"
-            value={totalNotes}
-            icon={<FaStickyNote className="text-orange-500" />}
-          />
-          <StatCard
-            title="Favoritas"
-            value={favoriteNotes}
-            icon={<FaStar className="text-yellow-500" />}
-          />
-          <StatCard
-            title="Na Lixeira"
-            value={trashNotes}
-            icon={<FaTrash className="text-red-500" />}
-          />
+          <div
+            onClick={() => {
+              setCurrentPage("/notes");
+              navigate("/notes");
+            }}
+          >
+            <StatCard
+              title="Total de Notas"
+              value={totalNotes}
+              icon={<FaStickyNote className="text-orange-500" />}
+            />
+          </div>
+          <div
+            onClick={() => {
+              setCurrentPage("/favorites");
+              navigate("/favorites");
+            }}
+          >
+            <StatCard
+              title="Favoritas"
+              value={favoriteNotes}
+              icon={<FaStar className="text-yellow-500" />}
+            />
+          </div>
+          <div
+            onClick={() => {
+              setCurrentPage("/trash");
+              navigate("/trash");
+            }}
+          >
+            <StatCard
+              title="Na Lixeira"
+              value={trashNotes}
+              icon={<FaTrash className="text-red-500" />}
+            />
+          </div>
         </div>
 
         {/* --- SEÇÃO DE GRÁFICOS --- */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 h-64 min-w-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 min-w-0">
           {/* Card do Gráfico 1 */}
           <div className="p-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl shadow-sm">
             <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
@@ -80,11 +101,12 @@ export function Home() {
                   </Pie>
                   <Tooltip
                     contentStyle={{
-                      backgroundColor: "#f0f0f0",
-                      border: "none",
+                      backgroundColor: "#18181b", // zinc-900 para combinar com o card
+                      border: "1px solid #27272a", // zinc-800
                       borderRadius: "8px",
                       color: "#fff",
                     }}
+                    itemStyle={{ color: "#fff" }} // Garante que o texto interno seja branco
                   />
                 </PieChart>
               </ResponsiveContainer>
@@ -101,7 +123,7 @@ export function Home() {
           </div>
 
           {/* Card de Boas-vindas Dinâmico */}
-          <div className="p-8 bg-orange-500 rounded-3xl flex flex-col justify-center text-white relative overflow-hidden group">
+          <div className="hidden lg:block p-8 bg-orange-500 rounded-3xl justify-center text-white relative overflow-hidden group">
             <div className="relative z-10">
               <h2 className="text-3xl font-bold mb-2">
                 Produtividade em alta!

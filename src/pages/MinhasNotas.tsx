@@ -52,7 +52,7 @@ export function MinhasNotas() {
               Suas <span className="text-orange-500">Notas</span>
             </h2>
             <p className="text-zinc-500 font-medium mt-1">
-              Bem-vindo de volta, Jota! Organize suas ideias abaixo.
+              Bem-vindo de volta! Organize suas ideias abaixo.
             </p>
           </div>
 
@@ -69,9 +69,8 @@ export function MinhasNotas() {
           {/* Mapeamento das Notas Ativas com Swipe */}
           {activeNotes.map((note) => (
             <SwipeableNote
-              key={note.id}
-              onFavorite={() => handleToggleFavorite(note.id)}
-              onDelete={() => handleMoveToTrash(note.id)}
+              onRightAction={() => handleToggleFavorite(note.id)}
+              onLeftAction={() => handleMoveToTrash(note.id)}
             >
               <CreateNewNotes note={note} setNotes={setNotes} />
             </SwipeableNote>

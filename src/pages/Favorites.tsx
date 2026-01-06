@@ -75,9 +75,8 @@ export function Favorites() {
             {/* Renderizando as favoritas com Swipe */}
             {favoriteNotes.map((note) => (
               <SwipeableNote
-                key={note.id}
-                onFavorite={() => handleToggleFavorite(note.id)}
-                onDelete={() => handleMoveToTrash(note.id)}
+                onRightAction={() => handleToggleFavorite(note.id)}
+                onLeftAction={() => handleMoveToTrash(note.id)}
               >
                 <CreateNewNotes note={note} setNotes={setNotes} />
               </SwipeableNote>

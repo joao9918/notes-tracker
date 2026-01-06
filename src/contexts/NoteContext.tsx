@@ -9,6 +9,7 @@ interface NoteContextType {
   setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
   onChangeFavorited: (id: string) => void;
   onUpdateNote: (id: string, title: string, description: string) => void;
+  updateNote: (id: string, updatedData: Partial<Note>) => void;
 }
 
 const NoteContext = createContext<NoteContextType | undefined>(undefined);
@@ -51,6 +52,15 @@ export function NoteProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
+  const updateNote = (id: string, updatedData: Partial<Note>) => {
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        // Agora o TS entende que updatedData é um objeto que contém campos da Note
+        String(note.id) === String(id) ? { ...note, ...updatedData } : note
+      )
+    );
+  };
+
   return (
     <NoteContext.Provider
       value={{
@@ -60,6 +70,7 @@ export function NoteProvider({ children }: { children: React.ReactNode }) {
         setCurrentPage,
         onChangeFavorited,
         onUpdateNote,
+        updateNote,
       }}
     >
       {children}

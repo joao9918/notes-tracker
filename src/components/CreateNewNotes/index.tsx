@@ -32,40 +32,33 @@ export function CreateNewNotes({ note, setNotes }: CreateNewNotesProps) {
   return (
     <div
       onClick={() => onSeeDetailsClick(note.id)}
-      className={`group p-6 h-40 border transition-all cursor-pointer relative overflow-hidden rounded-xl
-        ${
-          note.isFavorited
-            ? "bg-orange-50/50 dark:bg-orange-500/5 border-orange-200 dark:border-orange-500/30 shadow-sm"
-            : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800/50"
-        } 
-        hover:border-orange-500/60 hover:shadow-lg`}
+      className="group p-6 h-40 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800/50 rounded-xl hover:border-orange-500/60 hover:shadow-lg transition-all cursor-pointer relative overflow-hidden"
     >
-      {/* 1. Indicador de Favorito (Sempre visível se favoritado) */}
-      {note.isFavorited && (
-        <div className="absolute -top-1 -left-1 z-20">
-          <div className="bg-orange-500 text-white p-1.5 rounded-br-xl shadow-md">
-            <FaStar size={12} />
-          </div>
-        </div>
-      )}
-
-      {/* 2. Linha no topo decorativa */}
+      {/* 1. Barra Laranja no Topo: Sempre visível se for favorita, aparece no hover se não for */}
       <div
-        className={`absolute top-0 left-0 w-full h-1 transition-transform origin-left
+        className={`absolute top-0 left-0 w-full h-1 transition-transform origin-left duration-300
         ${
           note.isFavorited
-            ? "bg-orange-500 scale-x-100"
-            : "bg-orange-500 scale-x-0 group-hover:scale-x-100"
+            ? "scale-x-100 bg-orange-500"
+            : "scale-x-0 group-hover:scale-x-100 bg-orange-500/50"
         }
       `}
       />
 
+      {/* 2. Estrela sutil no canto superior (Opcional: apenas se você quiser um ícone extra) */}
+      {note.isFavorited && (
+        <div className="absolute top-3 right-3 text-orange-500">
+          <FaStar size={14} className="drop-shadow-sm" />
+        </div>
+      )}
+
       <div className="flex flex-col h-full">
+        {/* Título: Apenas muda a cor se for favorito */}
         <h3
-          className={`font-bold text-xl mb-2 transition-colors
+          className={`font-bold text-xl mb-2 transition-colors duration-300
           ${
             note.isFavorited
-              ? "text-orange-600 dark:text-orange-400"
+              ? "text-orange-600 dark:text-orange-500"
               : "text-zinc-800 dark:text-zinc-100"
           }
         `}
@@ -77,14 +70,13 @@ export function CreateNewNotes({ note, setNotes }: CreateNewNotesProps) {
           {note.description}
         </p>
 
-        {/* --- BOTÕES PARA DESKTOP --- */}
-        {/* max-md:hidden faz sumir no celular | group-hover:opacity-100 faz aparecer no hover do PC */}
-        <div className="absolute top-4 right-4 hidden md:flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-30">
+        {/* BOTÕES PARA DESKTOP */}
+        <div className="absolute bottom-4 right-4 hidden md:flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-30">
           <button
             title="Favoritar"
             className="p-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             onClick={(e) => {
-              e.stopPropagation(); // Importante para não abrir a nota ao clicar aqui
+              e.stopPropagation();
               onChangeFavorited(note.id);
             }}
           >
@@ -102,7 +94,7 @@ export function CreateNewNotes({ note, setNotes }: CreateNewNotesProps) {
             title="Mover para lixeira"
             className="p-1.5 rounded-full hover:bg-red-500/10 text-zinc-300 dark:text-zinc-600 hover:text-red-500 transition-colors"
             onClick={(e) => {
-              e.stopPropagation(); // Importante para não abrir a nota ao clicar aqui
+              e.stopPropagation();
               moveToTrash(note.id);
             }}
           >
