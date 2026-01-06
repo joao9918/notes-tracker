@@ -2,8 +2,8 @@
 
 Este é um gerenciador de notas moderno e intuitivo, focado em organização pessoal e produtividade. O projeto apresenta um dashboard completo com estatísticas em tempo real, sistema de favoritos e lixeira.
 
-![Dashboard Desktop](./assets/desktop-preview.png)
-![Dashboard Mobile](./assets/mobile-preview.png)
+![Dashboard Desktop](./src/assets/desktop-preview.png)
+![Dashboard Mobile](./src/assets/mobile-preview.png)
 
 ## 🚀 Funcionalidades
 
